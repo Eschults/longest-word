@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+      <h2><strong>Find the longest word!</strong></h2>
+      <h1><%= @grid %></h1>
+      <form action="/score">
+        <div class="form-group">
+          <label for="attempt">Enter your best shot!</label>
+          <input class="form-control" type="text" id="attempt" name="attempt" placeholder="Type here">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Submit attempt!">
+        <input type="hidden" name="start_time" value="<%= @start_time %>">
+        <input type="hidden" name="grid" value="<%= @grid %>">
+      </form>
+    </div>
+  </div>
+</div>

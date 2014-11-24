@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3 text-center">
+      <h1><%= @output[:message].capitalize %></h1>
+      <h2><%= "Time elapsed: #{@output[:time]}"; %></h2>
+      <h2><%= "Translation: #{@output[:translation]}"; %></h2>
+      <h2><%= "SCORE: #{@output[:score]}"; %></h2>
+      <p><%= "Nb of games: #{session[:nb_games]}"; %></p>
+      <p><%= "Avge score: #{session[:avge_score]}"; %></p>
+      <%= link_to "Play again", game_path %>
+    </div>
+  </div>
+</div>
