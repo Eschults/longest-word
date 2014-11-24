@@ -5,17 +5,17 @@ class WordsController < ApplicationController
   def game
     @grid = generate_grid(8).join(" - ")
     @start_time = Time.now.to_f
-    session[:nb_games].nil? ? session[:nb_games] = 1 : session[:nb_games] += 1
+    session[:nb_games] ? session[:nb_games] += 1 : session[:nb_games] = 1
   end
 
   def score
-    @start_time = params[:start_time]
-    @grid = params[:grid]
-    @end_time = Time.now.to_f
-    @attempt = params[:attempt]
-    @output = run_game(@attempt, @grid, @start_time, @end_time)
-    session[:aggr_score].nil? ? session[:aggr_score] = @output[:score] : session[:aggr_score] += @output[:score]
-    session[:avge_score] = session[:aggr_score].fdiv(session[:nb_games])
+    start_time = params[:start_time]
+    grid = params[:grid]
+    end_time = Time.now.to_f
+    attempt = params[:attempt]
+    @output = run_game(attempt, grid, start_time, end_time)
+    session[:aggr_score] ? session[:aggr_score] += @output[:score] : session[:aggr_score] = @output[:score]
+    session[:avge_score] = session[:aggr_score].fdiv(session[:nb_games]).to_i
   end
 
   def generate_grid(grid_size)
